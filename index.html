@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="images/index.css">
+</head>
+<body>
+  <div class="maindiv">
+   <h1 style="color: aliceblue;">Rock Paper Scissors</h1>
+  <div class="imgdiv">
+    <button style="cursor: pointer;" class="x" onclick="playgame('paper')"><img class="imh" src="images/paper-emoji.png" alt=""></button>
+  <button class="marginleft" style="cursor: pointer;" class="cesor" onclick="playgame('rock')"><img class="imh " src="images/rock-emoji.png" alt=""></button>
+  <button class="marginleft" style="cursor: pointer;" class="rock" onclick="playgame('scissors')"><img class="imh " src="images/scissors-emoji.png" alt=""></button>
+  
+  </div>
+  
+  <h3 style="color: aliceblue;" class="win"></h3>
+  <div class="label">
+    <span>You <span class="lm1"></span>
+    </span>
+    <span>computer
+      <span class="lm2"></span>
+    </span></div>
+    <div class="score">
+      <span class="scoreh1">You Win : 0</span>
+      <span class="scoreh2"> You Lose : 0</span>
+      <span class="scoreh3"> Tie : 0</span>
+    </div>
+    <button class="resetscore" onclick="resetbutton()">Reset Game</button>
+  
+  </div>
+
+  
+
+  <script>
+
+   var count=0;
+   var count2=0;
+   var count3=0;
+   let win=document.querySelector(".win");
+   
+   let tie=document.querySelector(".tie");
+   let img1=document.querySelector(".lm1");
+   let img2=document.querySelector(".lm2");
+   let score1=document.querySelector(".scoreh1");
+   let score2=document.querySelector(".scoreh2");
+   let score3=document.querySelector(".scoreh3");
+   let reset=document.querySelector(".resetscore");
+    function playgame(userchoice2){
+      
+      let coll =["paper", "scissors" ,"rock"]
+    let random=Math.floor(Math.random() * coll.length);
+    console.log(random);
+      let playerChoice=userchoice2;
+      let computerChoice=coll[random];
+      console.log(playerChoice);
+      console.log(computerChoice);
+      if(playerChoice==computerChoice)
+      {  count+=1;
+        console.log(count);
+        console.log("match tie");
+        win.innerText="Match tie";
+        score3.innerText=` Tie: ${count}`;
+
+
+        
+
+      }
+      else if(
+        (playerChoice === "rock" && computerChoice === "scissors") ||
+        (playerChoice === "paper" && computerChoice === "rock") ||
+        (playerChoice === "scissors" && computerChoice === "paper")
+){
+        count2+=1;
+
+        console.log("you win");
+        win.innerText="You Win";
+        
+        score1.innerText=` You win : ${count2}`;
+
+      }
+     else {
+      count3+=1;
+      console.log("lose");
+      win.innerText="You Lose";
+      score2.innerText=` You Lose : ${count3}`;
+
+     
+     }
+     if (playerChoice=="paper")
+     {
+      img1.innerHTML='<img src="images/paper-emoji.png" alt="" width="20px">';
+     }
+     if (playerChoice=="rock")
+     {
+      img1.innerHTML='<img src="images/rock-emoji.png" alt="" width="20px">';
+     }
+     
+     if (playerChoice=="scissors")
+     {
+      img1.innerHTML='<img src="images/scissors-emoji.png" alt="" width="20px">';
+     }
+     if (computerChoice=="paper"){
+      img2.innerHTML='<img src="images/paper-emoji.png" alt="" width="20px">';
+
+     }
+     if (computerChoice=="rock"){
+      img2.innerHTML='<img src="images/rock-emoji.png" alt="" width="20px">';
+
+     }
+     if (computerChoice=="scissors"){
+      img2.innerHTML='<img src="images/scissors-emoji.png" alt="" width="20px">';
+
+     }
+     
+     
+
+    }
+   function resetbutton(){
+    win.innerText="";
+    score1.innerText=` You win : ${0}`;
+    score2.innerText=` You Lose : ${0}`;
+    score3.innerText=` Tie: ${0}`;
+    img1.innerHTML="";
+    img2.innerHTML="";
+    count=0;
+    count2=0;
+    count3=0;
+    
+    }
+  </script>
+</body>
+</html>
